@@ -1,0 +1,11 @@
+/* .icon {
+    
+}
+
+.icon > img {
+
+} */
+[class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    vertical-align: middle;
+}
