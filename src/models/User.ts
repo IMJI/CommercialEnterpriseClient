@@ -1,6 +1,6 @@
-class User {
-    email!: string;
-    token!: string;
+interface User {
+    email?: string;
+    token?: string;
 }
 
 export default User;
