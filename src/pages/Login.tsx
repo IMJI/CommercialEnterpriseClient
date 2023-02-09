@@ -1,10 +1,14 @@
 import axios, { AxiosError } from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import useGlobalState from '../hooks/GlobalState';
+import Button from '../components/buttons/Button';
+import Icon from '../components/icons/Icon';
+import InputField from '../components/inputs/InputField';
+import Notification from '../components/notifications/Notification';
 import useLocalStorage from '../hooks/LocalStorage';
 import LoginResponse from '../models/LoginResponse';
 import Fetch from '../services/Fetch';
+import classes from './Login.module.css';
 
 function Login() {
     const navigate = useNavigate();
@@ -30,23 +34,39 @@ function Login() {
     }
 
     return (
-        <div>
-            {errorMessage !== '' ? <p color='red'>{errorMessage}</p> : ''}
-            <input
-                type="email"
-                name=""
-                id="emailInput"
-                placeholder="Электронная почта"
-                onInput={e => setEmail((e.target as HTMLInputElement).value) }
-            />
-            <input
-                type="password"
-                name=""
-                id="passwordInput"
-                placeholder="Пароль"
-                onInput={e => setPassword((e.target as HTMLInputElement).value) }
-            />
-            <button onClick={login}>Войти</button>
+        <div className={classes.container}>
+            <div className={classes.column}>
+                <div className={classes.titles}>
+                    <h1 className={classes.title}>Commercial Enerprise</h1>
+                    <h3 className={classes.titleSecondary}>Вход в систему</h3>
+                </div>
+                <div className={classes.errorContainer}>
+                    {errorMessage !== ''
+                        ? <Notification type="error" showIcon>{errorMessage}</Notification>
+                        : ''
+                    }
+                </div>
+                <div className={classes.card}>
+                    <div className={classes.inputGroup}>
+                        <InputField
+                            type="email"
+                            label="Электронная почта"
+                            id="emailInput"
+                            placeholder="example@email.com"
+                            value={email}
+                            onValueChange={setEmail}
+                        />
+                        <InputField
+                            type="password"
+                            label="Пароль"
+                            id="passwordInput"
+                            value={password}
+                            onValueChange={setPassword}
+                        />
+                    </div>
+                    <Button onClick={() => login()}>Войти</Button>
+                </div>
+            </div>
         </div>
     );
 }
