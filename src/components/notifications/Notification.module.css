@@ -1,0 +1,41 @@
+.notification {
+    width: 100%;
+    height: 3.625rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: var(--notification-bg-color);
+    color: var(--notification-text-color);
+    border: 1px solid var(--notification-text-color);
+    border-radius: 0.375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.notificationBody {
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.notificationMessage {
+    margin-left: .5rem;
+}
+
+.closeButton {
+    background: #00000000;
+    appearance: none;
+    stroke: none;
+    border: none;
+    cursor: pointer;
+    padding: 1.25rem 1rem;
+}
+
+.error {
+    --notification-bg-color: #FFE0E0;
+    --notification-text-color: #D30000;
+}
