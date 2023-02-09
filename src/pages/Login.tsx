@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useGlobalState from '../hooks/GlobalState';
 import useLocalStorage from '../hooks/LocalStorage';
 import LoginResponse from '../models/LoginResponse';
+import Fetch from '../services/Fetch';
 
 function Login() {
     const navigate = useNavigate();
@@ -13,22 +14,18 @@ function Login() {
     const [errorMessage, setErrorMessage] = useState('');
 
     const login = async () => {
-        try {
-            const res = await axios.post('https://localhost:8080/login', {
-                email,
-                password
-            });
-            const data = (res.data) as LoginResponse;
-
+        const fetchLogin = new Fetch<LoginResponse>('/login');
+        const response = await fetchLogin.post({ email, password });
+        if (response.successful) {
+            const data = response.data;
             setUser({
-                email: data.user.email,
-                token: data.token
+                email: data?.user.email,
+                token: data?.token
             });
             navigate('/');
-        } catch (e) {
-            const error = e as AxiosError;
-            const errorRes = error.response?.data as Error;
-            setErrorMessage(errorRes.message);
+        } else {
+            const error = response.error;
+            setErrorMessage(error?.message || '');
         }
     }
 
