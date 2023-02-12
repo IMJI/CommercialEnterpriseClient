@@ -5,9 +5,15 @@ import Error from "../types/Error";
 class Fetch<T> {
     private readonly baseUrl = 'https://localhost:8080';
     private route: string;
+    private token?: string;
 
     constructor(route: string) {
         this.route = route;
+    }
+
+    public auth(token: string): Fetch<T> {
+        this.token = token;
+        return this;
     }
 
     public async get(query?: object): Promise<Response<T[]>>
@@ -23,7 +29,7 @@ class Fetch<T> {
     // TODO: add body type
     public async post(body: object): Promise<Response<T>> {
         try {
-            const response = await axios.post(`${this.baseUrl}${this.route}`, body);
+            const response = await axios.post(`${this.baseUrl}${this.route}`, body, this.getAuthToken());
             return this.handleResponse(response);
         } catch (e) {
             const error = e as AxiosError;
@@ -31,9 +37,20 @@ class Fetch<T> {
         }
     }
 
+    private getAuthToken(): object {
+        if (this.token) {
+            return {
+                headers: {
+                    'Authorization': `Basic ${this.token}` 
+                }
+            }
+        }
+        return {}
+    }
+
     private async getById(id: number): Promise<Response<T>> {
         try {
-            const response = await axios.get(`${this.baseUrl}${this.route}/${id}`);
+            const response = await axios.get(`${this.baseUrl}${this.route}/${id}`, this.getAuthToken());
             return this.handleResponse(response);
         } catch (e) {
             const error = e as AxiosError;
@@ -45,7 +62,7 @@ class Fetch<T> {
     private async getByQuery(query?: object): Promise<Response<T>> {
         try {
             // TODO: add query string to url
-            const response = await axios.get(`${this.baseUrl}${this.route}`);
+            const response = await axios.get(`${this.baseUrl}${this.route}`, this.getAuthToken());
             return this.handleResponse(response);
         } catch (e) {
             const error = e as AxiosError;
