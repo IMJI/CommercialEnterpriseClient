@@ -1,0 +1,33 @@
+.profile {
+    /* width: 100%; */
+    margin: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profilePicture {
+    border-radius: 50%;
+    background: red;
+    margin-right: 16px;
+    width: 46px;
+    height: 46px;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileName {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.profileRole {
+    color: #6E6893;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.5;
+}
