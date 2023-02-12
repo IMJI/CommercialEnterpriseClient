@@ -1,0 +1,25 @@
+.menu {
+
+}
+
+.menuItem {
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.menuItem:hover {
+    color: #6E6893;
+}
+
+.delimeter {
+    border: none;
+    border-bottom: 1px solid #d9d5ec;
+}
+
+.menuName {
+    margin-left: 12px;
+}
