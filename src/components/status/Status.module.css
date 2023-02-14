@@ -1,0 +1,39 @@
+.success {
+    --primary-status-color: #007F00;
+    --secondary-status-color: #CDFFCD;
+}
+
+.warning {
+    --primary-status-color: #965E00;
+    --secondary-status-color: #FFECCC;
+}
+
+.error {
+    --primary-status-color: #D30000;
+    --secondary-status-color: #FFE0E0;
+}
+
+.status {
+    width: auto;
+    height: 20px;
+    padding: 0 6px;
+    background: var(--secondary-status-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.point {
+    width: 8px;
+    height: 8px;
+    margin-right: 6px;
+    background: var(--primary-status-color);
+    border-radius: 50%;
+}
+
+.statusText {
+    font-size: 12px;
+    font-weight: 600;
+    color:  var(--primary-status-color);
+}
