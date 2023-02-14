@@ -1,0 +1,61 @@
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.header {
+    width: 100%;
+    height: 45px;
+    background: #F4F2FF;
+    color: #6E6893;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.header th {
+    text-align: start;
+}
+
+.body {
+    font-size: 14px;
+}
+
+.tableRow {
+    width: 100%;
+    height: 60px;
+    font-weight: 600;
+    box-sizing: border-box;
+    border-top: 1px solid #D9D5EC;
+}
+
+.tableRow:hover {
+    background: #F2F0F9;
+}
+
+.multilineCell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  
+}
+
+.moreButton {
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.topLine {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 4px;
+}
+
+.bottomLine {
+    font-weight: 400;
+    color: #6E6893;
+}
